@@ -77,7 +77,7 @@ const TAB_DATA = [
       <div className="flex flex-col space-y-4">
     <h3 className="text-xl font-bold">Grado en Ingeniería de Sistemas</h3>
     <div className="flex items-center">
-        <img src="./images/skills/unilogo.png" alt="Logo UNI" className="h-10 mr-2" />
+    <Image src="./images/skills/unilogo.png" alt="Logo UNI" width={50} height={50} className="h-10 mr-2" />
         <p className="text-lg">Universidad Nacional de Ingeniería (UNI)</p>
     </div>
     <p className="text-gray-600">

@@ -5,9 +5,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = process.env.FROM_EMAIL;
 
 export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
   try {
+    const { email, subject, message } = await req.json();
+
+    // Validación de datos
+    if (!email || !subject || !message) {
+      return NextResponse.json({ error: "Datos incompletos" }, 400);
+    }
+
     const data = await resend.emails.send({
       from: fromEmail,
       to: [fromEmail, email],
@@ -21,8 +26,10 @@ export async function POST(req, res) {
         </>
       ),
     });
+
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    console.error(error);
+    return NextResponse.json({ error: "Error al enviar correo" }, 500);
   }
 }
