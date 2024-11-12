@@ -1,35 +1,38 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { PrismaClient } from '@prisma/client';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+const prisma = new PrismaClient();
 
-export async function POST(req, res) {
+export async function POST(req) {
   try {
-    const { email, subject, message } = await req.json();
+    // Parsear el body
+    const formData = await req.formData();
+    console.log('Datos recibidos:', Object.fromEntries(formData));
 
-    // Validación de datos
+    const { email, subject, message } = Object.fromEntries(formData);
+
+    // Validación
     if (!email || !subject || !message) {
-      return NextResponse.json({ error: "Datos incompletos" }, 400);
+      return NextResponse.json({ error: "Datos incompletos" }, { status: 400 });
     }
 
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject: subject,
-      react: (
-        <>
-          <h1>{subject}</h1>
-          <p>Thank you for contacting us!</p>
-          <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+    // Intentar guardar en la base de datos
+    const savedContact = await prisma.contact.create({
+      data: { email, subject, message },
     });
 
-    return NextResponse.json(data);
+    console.log('Datos guardados en DB:', savedContact);
+
+    return NextResponse.json({
+      message: "Mensaje guardado exitosamente",
+      contact: savedContact,
+    });
+
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Error al enviar correo" }, 500);
+    console.error('Error general:', error);
+    
+    return NextResponse.json({ 
+      error: error.message || "Error al procesar la solicitud" 
+    }, { status: 500 });
   }
 }
