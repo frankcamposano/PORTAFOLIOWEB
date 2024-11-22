@@ -101,27 +101,27 @@ const TAB_DATA = [
 const certificationsData = [
   {
     title: "Buenas Prácticas de Manipulación de Alimentos",
-    filePath: "/certificates/CertificadoBPM.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoBPM.png", // Path to the image
   },
   {
     title: "Curador de datos",
-    filePath: "/certificates/CertificadoCuradorBD.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoCuradorBD.png", // Path to the image
   },
   {
     title: "Python Intermediate",
-    filePath: "/certificates/CertificadoPython.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoPython.png", // Path to the image
   },
   {
     title: "Gestión de proyectos con Microsoft 365",
-    filePath: "/certificates/CertificadoGestion de proyectos con Microsoft 365.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoGestionProyectos.png", // Path to the image
   },
   {
     title: "SQL Intermediate",
-    filePath: "/certificates/CertificadoSQL.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoSQL.png", // Path to the image
   },
   {
     title: "Scrum Fundamentals Certified",
-    filePath: "/certificates/CertificadoScrum.pdf", // Ruta al archivo PDF
+    imagePath: "/images/certificates/certificadoScrum.png", // Path to the image
   },
 ];
 
@@ -145,7 +145,7 @@ const AboutSection = () => {
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
         
         {/* Image Section */}
-        <Image src="/images/about-image.png" width={500} height={500} alt="About Me" />
+        <Image src="/images/pc.webp" width={500} height={500} alt="About Me" />
         
         {/* Content Section */}
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">

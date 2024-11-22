@@ -1,0 +1,13 @@
+/* ProjectCard.module.css */
+
+.additional-images {
+    display: flex;
+    flex-direction: column; /* O 'row' si prefieres horizontal */
+    margin-top: 10px;
+ }
+ 
+ .additional-images img {
+    max-width: 100%; /* Ajustar tamaño */
+    height: auto;
+    margin-bottom: 10px; /* Espaciado entre imágenes */
+ }

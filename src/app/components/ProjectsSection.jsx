@@ -11,7 +11,7 @@ const projectsData = [
     description: "Project 1 description",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/tu_usuario/react-portfolio",
+    gitUrl: "https://github.com/frankcamposano/PORTAFOLIOWEB",
     previewUrl: "/",
   },
   {
@@ -21,30 +21,30 @@ const projectsData = [
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/frankcamposano/aplicacion-clima",
-    previewUrl: "/",
+    previewUrl: "https://aplicacion-clima-frank.netlify.app/",
   },
   {
     id: 3,
     title: "Graficos Interactivos",
-    description: "Project 3 description",
+    description: "Project 3 ventanas para insertar visualizar datos",
     image: "/images/projects/3.png",
     tag: ["All", "Data"],
     gitUrl: "https://github.com/frankcamposano/Graficos-interactivos",
-    previewUrl: "/",
+    previewUrl: "https://graficos-interactivos2024.streamlit.app/",
   },
   {
     id: 4,
     title: "Sorteo Streamlit",
-    description: "Project 4 description",
+    description: "Project Sorteo ",
     image: "/images/projects/4.png",
     tag: ["All", "Data"],
     gitUrl: "https://github.com/frankcamposano/SorteoStreamlit",
-    previewUrl: "/",
+    previewUrl: "https://sorteo-stream-lit2024.streamlit.app/",
   },
   {
     id: 5,
     title: "Generador Fake",
-    description: "Authentication and CRUD operations",
+    description: "Generacion de datos falsos varias columnas en excel",
     image: "/images/projects/5.png",
     tag: ["All", "Data"],
     gitUrl: "https://github.com/frankcamposano/GENERADORFAKE",
@@ -58,7 +58,8 @@ const projectsData = [
     tag: ["All", "Data"],
     gitUrl: "/",
     previewUrl: "/",
-  },
+    additionalImages: ["/images/projects/additional1.png", "/images/projects/additional2.png"] // Add your image paths here
+  }
 ];
 
 const ProjectList = () => {
@@ -134,12 +135,13 @@ const ProjectsSection = () => {
             transition={{ duration: 0.3, delay: index * 0.4 }}
           >
             <ProjectCard
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
-            />
+  title={project.title}
+  description={project.description}
+  imgUrl={project.image}
+  gitUrl={project.gitUrl}
+  previewUrl={project.previewUrl}
+  additionalImages={project.additionalImages} // Pass additional images here
+/>
           </motion.li>
         ))}
       </ul>
